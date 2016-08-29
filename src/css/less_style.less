@@ -1,0 +1,90 @@
+@bg-base:#eee;
+@font-base:1em Courier,Helvetica,Arial,sans-serif;
+
+// *{
+//   box-sizing: border-box;
+// }
+
+body{
+  background-color: @bg-base;
+}
+//uso de comentarios para Less
+/* uso de comentarios trasladados a CSS*/
+header{
+  padding: 20px;
+  background-color: #333;
+  > h1{
+    background-color: @bg-base;
+  }
+  p{
+    color: #fff;
+    font: @font-base;
+  }
+}
+
+a{
+  color: red;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.boton{
+  &-ok{
+    color: green;
+  }
+  &-error{
+    color: red;
+  }
+}
+
+.abuelo{
+  .padre{
+    & > h1{
+      color: white;
+    }
+  }
+}
+
+.abuelo{
+  .padre{
+    .maternos &{
+      color: red;
+    }
+  }
+}
+
+div,p,span{
+  & + &{
+    color: white;
+  }
+}
+
+//uso de variables
+
+@div-name: test-img;
+@fsize: font-size;
+@fweight: font-weight;
+
+#@{div-name}{
+  @bg-base: #fc0;
+
+  height: 200px;
+  color: #fff;
+  @{fsize}: 24px;
+  @{fweight}:bold;
+  background-color: @bg-base;
+}
+
+@saludo: 'hola';
+@hola: 'Hola LESS';
+
+#@{div-name}-2{
+  color: #333;
+  background-color: @bg-base;
+
+  &:after{
+    content: @@saludo;
+  }
+}
